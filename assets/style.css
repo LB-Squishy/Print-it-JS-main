@@ -127,10 +127,17 @@ header {
 	position: absolute;
 }
 #banner .arrow_left {
-	left: 10px;
+	left: 5%;
 }
 #banner .arrow_right {
-	right: 10px;
+	right: 5%;
+}
+#banner a:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+#banner a:active {
+	transform: scale(1);
 }
 /* Gestion des points du carrousel */
 .dots {
