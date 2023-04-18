@@ -1,3 +1,21 @@
+//GESTION DES FLECHES DU CARROUSEL
+
+// Ecoute du clic fleche gauche
+const arrowLeft = document.querySelector(".arrow_left");
+arrowLeft.addEventListener("click", function() {
+	console.log("Clic gauche OK!");
+});
+
+//ecoute du clic fleche droite
+const arrowRight = document.querySelector(".arrow_right");
+arrowRight.addEventListener("click", function() {
+	console.log("Clic droit OK!");
+});
+
+//GESTION DES POINTS DU CARROUSEL
+
+//GESTION DES SLIDES DU CARROUSEL
+
 const slides = [
 	{
 		"image":"slide1.jpg",
