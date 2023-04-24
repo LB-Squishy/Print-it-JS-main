@@ -24,45 +24,42 @@ const slides = [
 	utilise "TABLEAU DES SLIDES" en entrée
 */
 
-function newCarrousel() {
-	let currentSlide = 0;
-	dotCreate(currentSlide); //si présence de dot, sinon passer en commentaire
-	function generateSlide() {
-		document.querySelector(".banner-img").src = "./assets/images/slideshow/"+slides[currentSlide].image;
-		document.querySelector("#banner p").innerHTML = slides[currentSlide].tagLine;
-		dotCreate(currentSlide); //si présence de dot, sinon passer en commentaire
-		console.log ("Vous êtes sur la slide " + currentSlide);
-	}
-	function goPreviousSlide() {
-		const previousSlide = document.querySelector(".arrow_left");
-		previousSlide.addEventListener("click", function() {
-			currentSlide--;
-			if (currentSlide < 0) {
-				currentSlide = slides.length-1;
-			} 
-			generateSlide();
-		});
-	}
-	function goNextSlide () {
-		const nextSlide = document.querySelector(".arrow_right");
-		nextSlide.addEventListener("click", function() {
-			currentSlide++;
-			if (currentSlide >= slides.length) {
-				currentSlide = 0;
-			} 
-			generateSlide();
-		});
-	}
-	goPreviousSlide();
-	goNextSlide();
+let currentSlide = 0;
+dotCreate(); //si présence de dot, sinon passer en commentaire
+
+function changeSlide () {
+	const nextSlide = document.querySelector(".arrow_right");
+	nextSlide.addEventListener("click", function() {
+		currentSlide++;
+		if (currentSlide >= slides.length) {
+			currentSlide = 0;
+		} 
+		generateSlide();
+	});
+	const previousSlide = document.querySelector(".arrow_left");
+	previousSlide.addEventListener("click", function() {
+		currentSlide--;
+		if (currentSlide < 0) {
+			currentSlide = slides.length-1;
+		} 
+		generateSlide();
+	});
 }
-newCarrousel();
+
+function generateSlide() {
+	document.querySelector(".banner-img").src = "./assets/images/slideshow/"+slides[currentSlide].image;
+	document.querySelector("#banner p").innerHTML = slides[currentSlide].tagLine;
+	dotCreate(); //si présence de dot, sinon passer en commentaire
+	console.log ("Vous êtes sur la slide " + currentSlide);
+}
+
+changeSlide();
 
 /*BULLETS POINTS POUR CARROUSEL******************************************
 	AddOn de "NOUVEAU CARROUSEL"
 */
 
-function dotCreate(currentSlide) {
+function dotCreate() {
 	const dots = document.querySelector(".dots");
 	dots.innerHTML= "";
 	for (let dotIndex = 0; dotIndex <= slides.length-1; dotIndex++){
